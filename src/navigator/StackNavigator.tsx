@@ -6,6 +6,7 @@ import {ThemeColors} from '../themes/Colores';
 import {useAuth} from '../providers/AuthContext';
 import {ActivityIndicator} from 'react-native-paper';
 import Container from '../components/Container';
+import {ProfileScreen} from '../screens/ProfileScreen/ProfileScreen';
 
 const Stack = createStackNavigator();
 
@@ -24,7 +25,7 @@ export function StackNavigator() {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        cardStyle: {backgroundColor: ThemeColors.background},
+        cardStyle: {backgroundColor: ThemeColors.white},
         headerStyle: {
           elevation: 0,
           shadowOpacity: 0,
@@ -37,6 +38,7 @@ export function StackNavigator() {
       ) : (
         <Stack.Screen name="Login" component={LoginScreen} />
       )}
+      <Stack.Screen name="Profile" component={ProfileScreen} />
     </Stack.Navigator>
   );
 }

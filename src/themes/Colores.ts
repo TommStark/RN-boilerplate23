@@ -1,5 +1,5 @@
 export const ThemeColors = {
-  primary: '#62B888',
+  primary: '#8F277C',
   secondary: '#EBBE60',
   error: '#e74c3c',
   warning: '#f39c12',
@@ -7,5 +7,5 @@ export const ThemeColors = {
   success: '#27ae60',
   white: '#ffffff',
   black: '#000000',
-  background: '#0A1427',
+  background: '#009EE3',
 };

@@ -14,9 +14,13 @@ import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
-    backgroundColor: ThemeColors.background,
+    backgroundColor: ThemeColors.white,
     // color: !isDarkMode ? Colors.darker : Colors.lighter,
     flex: 1,
+  };
+  const backgroundStyleTop = {
+    backgroundColor: ThemeColors.background,
+    flex: 0,
   };
 
   const client = new QueryClient();
@@ -30,6 +34,7 @@ function App(): JSX.Element {
       <QueryClientProvider client={client}>
         <NavigationContainer>
           <PaperProvider>
+            <SafeAreaView style={backgroundStyleTop} />
             <SafeAreaView style={backgroundStyle}>
               <StatusBar
                 barStyle={!isDarkMode ? 'light-content' : 'dark-content'}

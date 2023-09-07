@@ -10,10 +10,14 @@ interface Props {
 
 const AvatarChip = ({name, imageUrl, onPress, icon}: Props) => (
   <Chip
+    style={{backgroundColor: 'transparent'}}
+    textStyle={{color: 'white', fontSize: 16, fontWeight: 'bold'}}
+    selectedColor="white"
     icon={icon && icon}
     avatar={
       imageUrl && (
         <Image
+          style={{width: 30, height: 30, borderRadius: 15}}
           source={{
             uri: imageUrl,
           }}
@@ -21,7 +25,7 @@ const AvatarChip = ({name, imageUrl, onPress, icon}: Props) => (
       )
     }
     onPress={onPress}>
-    {name}
+    {name && `Hola, ${name} >`}
   </Chip>
 );
 
