@@ -1,5 +1,5 @@
-import {useState} from 'react';
-import {useAuth} from '../providers/AuthContext';
+import { useState } from 'react';
+import { useAuth } from '../providers/AuthContext';
 import useUserLoginStore from '../store/userStore';
 import api from '../services/api';
 
@@ -7,8 +7,8 @@ function useLogin() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
-  const {setNewToken} = useAuth();
-  const {setUserCredentials} = useUserLoginStore();
+  const { setNewToken } = useAuth();
+  const { setUserCredentials } = useUserLoginStore();
 
   interface LoginProps {
     username: string;
@@ -23,12 +23,12 @@ function useLogin() {
     setError(null);
 
     try {
-      const {data: userData}: any = await api.post('/auth/login', {
+      const { data: userData }: any = await api.post('/auth/login', {
         username,
         password,
       });
 
-      setUserCredentials({token: userData.token, id: userData.id});
+      setUserCredentials({ token: userData.token, id: userData.id });
       setNewToken(userData.token);
       setData(userData);
     } catch (err: any) {
@@ -38,7 +38,7 @@ function useLogin() {
     }
   };
 
-  return {isLoading, error, data, login};
+  return { isLoading, error, data, login };
 }
 
 export default useLogin;

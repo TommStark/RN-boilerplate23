@@ -1,16 +1,15 @@
 import 'react-native-gesture-handler';
 
-import React, {useEffect} from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {Platform, StatusBar, useColorScheme} from 'react-native';
+import React, { useEffect } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { Platform, StatusBar, useColorScheme } from 'react-native';
 
-import {PaperProvider} from 'react-native-paper';
-// import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {StackNavigator} from './src/navigator/StackNavigator';
-import {ThemeColors} from './src/themes/Colores';
-import {AuthProvider} from './src/providers/AuthContext';
+import { PaperProvider } from 'react-native-paper';
+import { StackNavigator } from './src/navigator/StackNavigator';
+import { ThemeColors } from './src/themes/Colores';
+import { AuthProvider } from './src/providers/AuthContext';
 import SplashScreen from 'react-native-splash-screen';
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';

@@ -1,12 +1,12 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
-import {LoginScreen} from '../screens/LoginScreen/LoginScreen';
-import {HomeScreen} from '../screens/HomeScreen/HomeScreen';
-import {ThemeColors} from '../themes/Colores';
-import {useAuth} from '../providers/AuthContext';
-import {ActivityIndicator} from 'react-native-paper';
+import { createStackNavigator } from '@react-navigation/stack';
+import { LoginScreen } from '../screens/LoginScreen/LoginScreen';
+import { ThemeColors } from '../themes/Colores';
+import { useAuth } from '../providers/AuthContext';
+import { ActivityIndicator } from 'react-native-paper';
 import Container from '../components/Container';
-import {ProfileScreen} from '../screens/ProfileScreen/ProfileScreen';
+import { ProfileScreen } from '../screens/ProfileScreen/ProfileScreen';
+import { BottomTabs } from './BottomTabs';
 
 export type HomeScreenProps = {};
 
@@ -28,7 +28,7 @@ interface AuthContextType {
 }
 
 export function StackNavigator() {
-  const {token, isLoading} = useAuth() as AuthContextType;
+  const { token, isLoading } = useAuth() as AuthContextType;
 
   if (isLoading) {
     return (
@@ -60,20 +60,20 @@ export function StackNavigator() {
       {token !== null ? (
         <Stack.Screen
           name="Home"
-          component={HomeScreen}
-          options={{title: 'Home'}}
+          component={BottomTabs}
+          options={{ title: 'Home' }}
         />
       ) : (
         <Stack.Screen
           name="Login"
           component={LoginScreen}
-          options={{title: 'Login'}}
+          options={{ title: 'Login' }}
         />
       )}
       <Stack.Screen
         name="Profile"
         component={ProfileScreen}
-        options={{title: 'Profile'}}
+        options={{ title: 'Profile' }}
       />
     </Stack.Navigator>
   );

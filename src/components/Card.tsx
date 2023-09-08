@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {Divider, Surface, Text} from 'react-native-paper';
-import {StyleSheet, TouchableOpacity, View} from 'react-native';
-import {ThemeColors} from '../themes/Colores';
+import { Divider, Surface, Text } from 'react-native-paper';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { ThemeColors } from '../themes/Colores';
 import MatchModal from './MatchModal';
 import Icon from 'react-native-vector-icons/Ionicons';
 interface MatchData {
@@ -28,16 +28,16 @@ const matches = [
       away: 'Negro',
     },
     players: [
-      {name: 'Juan', team: 'blanco'},
-      {name: 'Miguel', team: 'blanco'},
-      {name: 'Fito', team: 'negro'},
-      {name: 'Carlos', team: 'negro'},
-      {name: 'Pedro', team: 'blanco'},
-      {name: 'Lucas', team: 'negro'},
-      {name: 'Mariano', team: 'blanco'},
-      {name: 'Fernando', team: 'negro'},
-      {name: 'Alejandro', team: 'blanco'},
-      {name: 'Gabriel', team: 'negro'},
+      { name: 'Juan', team: 'blanco' },
+      { name: 'Miguel', team: 'blanco' },
+      { name: 'Fito', team: 'negro' },
+      { name: 'Carlos', team: 'negro' },
+      { name: 'Pedro', team: 'blanco' },
+      { name: 'Lucas', team: 'negro' },
+      { name: 'Mariano', team: 'blanco' },
+      { name: 'Fernando', team: 'negro' },
+      { name: 'Alejandro', team: 'blanco' },
+      { name: 'Gabriel', team: 'negro' },
     ],
   },
   {
@@ -49,16 +49,16 @@ const matches = [
       away: 'Negro',
     },
     players: [
-      {name: 'Gonzalo', team: 'blanco'},
-      {name: 'Fernando', team: 'blanco'},
-      {name: 'Roberto', team: 'negro'},
-      {name: 'Daniel', team: 'negro'},
-      {name: 'Jorge', team: 'blanco'},
-      {name: 'Guillermo', team: 'negro'},
-      {name: 'Damián', team: 'blanco'},
-      {name: 'Sebastian', team: 'negro'},
-      {name: 'Adrián', team: 'blanco'},
-      {name: 'Sergio', team: 'negro'},
+      { name: 'Gonzalo', team: 'blanco' },
+      { name: 'Fernando', team: 'blanco' },
+      { name: 'Roberto', team: 'negro' },
+      { name: 'Daniel', team: 'negro' },
+      { name: 'Jorge', team: 'blanco' },
+      { name: 'Guillermo', team: 'negro' },
+      { name: 'Damián', team: 'blanco' },
+      { name: 'Sebastian', team: 'negro' },
+      { name: 'Adrián', team: 'blanco' },
+      { name: 'Sergio', team: 'negro' },
     ],
   },
   {
@@ -70,16 +70,16 @@ const matches = [
       away: 'Negro',
     },
     players: [
-      {name: 'Rodrigo', team: 'blanco'},
-      {name: 'Martín', team: 'blanco'},
-      {name: 'Tomás', team: 'negro'},
-      {name: 'Leo', team: 'negro'},
-      {name: 'Nicolás', team: 'blanco'},
-      {name: 'Emilio', team: 'negro'},
-      {name: 'Facundo', team: 'blanco'},
-      {name: 'Gastón', team: 'negro'},
-      {name: 'Iván', team: 'blanco'},
-      {name: 'Diego', team: 'negro'},
+      { name: 'Rodrigo', team: 'blanco' },
+      { name: 'Martín', team: 'blanco' },
+      { name: 'Tomás', team: 'negro' },
+      { name: 'Leo', team: 'negro' },
+      { name: 'Nicolás', team: 'blanco' },
+      { name: 'Emilio', team: 'negro' },
+      { name: 'Facundo', team: 'blanco' },
+      { name: 'Gastón', team: 'negro' },
+      { name: 'Iván', team: 'blanco' },
+      { name: 'Diego', team: 'negro' },
     ],
   },
 ];
@@ -94,7 +94,7 @@ const Card = () => {
     setIsVisible(false);
   };
 
-  const renderItem = ({item, index}: {item: MatchData; index: number}) => (
+  const renderItem = ({ item, index }: { item: MatchData; index: number }) => (
     <>
       <View style={styles.itemContainer} key={index + item.date}>
         <TouchableOpacity
@@ -125,7 +125,7 @@ const Card = () => {
       <View style={styles.listContainer}>
         {matches
           .slice(0, 2)
-          .map((match, index) => renderItem({item: match, index: index}))}
+          .map((match, index) => renderItem({ item: match, index: index }))}
       </View>
       <MatchModal
         isVisible={isVisible}

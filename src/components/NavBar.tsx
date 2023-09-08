@@ -1,20 +1,26 @@
 import React from 'react';
-import {Dimensions, StyleSheet, View} from 'react-native';
+import { Dimensions, StyleSheet, View } from 'react-native';
 import AvatarChip from './AvatarChip';
-import {IconButton} from 'react-native-paper';
-import {useAuth} from '../providers/AuthContext';
+import { Chip } from 'react-native-paper';
+import { useAuth } from '../providers/AuthContext';
 import useUserLoginStore from '../store/userStore';
-import {useNavigation} from '@react-navigation/native';
-import {StackNavigationProp} from '@react-navigation/stack';
+import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { ThemeColors } from '../themes/Colores';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+const renderIcon = (name: string) => {
+  return <Icon name={name} size={18} color={ThemeColors.white} />;
+};
 
 export const NavBar = () => {
-  const {logout} = useAuth();
-  const {width} = Dimensions.get('window');
-  const {userData} = useUserLoginStore();
+  const { logout } = useAuth();
+  const { width } = Dimensions.get('window');
+  const { userData } = useUserLoginStore();
   const navigation = useNavigation<StackNavigationProp<any, 'Profile'>>();
 
   return (
-    <View style={{...styles.navBarContainer, width: width}}>
+    <View style={{ ...styles.navBarContainer, width: width }}>
       <View style={styles.navBarChip}>
         <AvatarChip
           name={userData?.name.split(' ')[0] || ''}
@@ -24,7 +30,15 @@ export const NavBar = () => {
           }}
         />
       </View>
-      <IconButton icon="logout" mode="contained" onPress={() => logout()} />
+      <Chip
+        icon={() => renderIcon('logout')}
+        onPress={() => logout()}
+        textStyle={{ color: ThemeColors.white }}
+        style={{
+          backgroundColor: ThemeColors.backgroundTransparent,
+        }}>
+        Logout
+      </Chip>
     </View>
   );
 };

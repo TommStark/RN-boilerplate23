@@ -8,4 +8,6 @@ export const ThemeColors = {
   white: '#ffffff',
   black: '#000000',
   background: '#009EE3',
+  backgroundTransparent: '#009ED1',
+  grey: '#9B9B9B',
 };

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import {View, StyleSheet} from 'react-native';
-import {Modal, Portal, Text, Button} from 'react-native-paper';
+import { View, StyleSheet } from 'react-native';
+import { Modal, Portal, Text, Button } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 interface MatchData {
@@ -23,7 +23,7 @@ interface Props {
   matchData: MatchData | null;
 }
 
-const MatchModal: React.FC<Props> = ({isVisible, onClose, matchData}) => {
+const MatchModal: React.FC<Props> = ({ isVisible, onClose, matchData }) => {
   const containerStyle = {
     backgroundColor: 'white',
     padding: 30,
