@@ -4,7 +4,6 @@ import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import {ThemeColors} from '../themes/Colores';
 import MatchModal from './MatchModal';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {FlatList} from 'react-native-gesture-handler';
 interface MatchData {
   date: string;
   time: string;
@@ -95,24 +94,27 @@ const Card = () => {
     setIsVisible(false);
   };
 
-  const renderItem = ({item}: {item: MatchData}) => (
-    <View style={styles.itemContainer}>
-      <TouchableOpacity
-        style={styles.itemTouchable}
-        onPress={() => {
-          setMatchSelected(item);
-          setIsVisible(true);
-        }}>
-        <View style={styles.itemInfo}>
-          <Text style={styles.itemText}>{item.date}</Text>
-          <Text style={styles.itemText}>{item.time}</Text>
-        </View>
-        <View style={styles.itemLocation}>
-          <Icon name="location" size={24} color={ThemeColors.primary} />
-          <Text style={styles.itemText}>{item.location}</Text>
-        </View>
-      </TouchableOpacity>
-    </View>
+  const renderItem = ({item, index}: {item: MatchData; index: number}) => (
+    <>
+      <View style={styles.itemContainer} key={index + item.date}>
+        <TouchableOpacity
+          style={styles.itemTouchable}
+          onPress={() => {
+            setMatchSelected(item);
+            setIsVisible(true);
+          }}>
+          <View style={styles.itemInfo}>
+            <Text style={styles.itemText}>{item.date}</Text>
+            <Text style={styles.itemText}>{item.time}</Text>
+          </View>
+          <View style={styles.itemLocation}>
+            <Icon name="location" size={24} color={ThemeColors.primary} />
+            <Text style={styles.itemText}>{item.location}</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+      <Divider />
+    </>
   );
 
   return (
@@ -121,13 +123,9 @@ const Card = () => {
         <Text> ** Proximos Partidos **</Text>
       </View>
       <View style={styles.listContainer}>
-        <FlatList
-          data={matches.slice(0, 3)}
-          renderItem={renderItem}
-          keyExtractor={(item, index) => index.toString()}
-          style={styles.flatListContainer}
-          ItemSeparatorComponent={() => <Divider />}
-        />
+        {matches
+          .slice(0, 2)
+          .map((match, index) => renderItem({item: match, index: index}))}
       </View>
       <MatchModal
         isVisible={isVisible}

@@ -2,7 +2,8 @@ import 'react-native-gesture-handler';
 
 import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {Platform, SafeAreaView, StatusBar, useColorScheme} from 'react-native';
+import {Platform, StatusBar, useColorScheme} from 'react-native';
+
 import {PaperProvider} from 'react-native-paper';
 // import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {StackNavigator} from './src/navigator/StackNavigator';
@@ -18,10 +19,6 @@ function App(): JSX.Element {
     // color: !isDarkMode ? Colors.darker : Colors.lighter,
     flex: 1,
   };
-  const backgroundStyleTop = {
-    backgroundColor: ThemeColors.background,
-    flex: 0,
-  };
 
   const client = new QueryClient();
 
@@ -34,14 +31,11 @@ function App(): JSX.Element {
       <QueryClientProvider client={client}>
         <NavigationContainer>
           <PaperProvider>
-            <SafeAreaView style={backgroundStyleTop} />
-            <SafeAreaView style={backgroundStyle}>
-              <StatusBar
-                barStyle={!isDarkMode ? 'light-content' : 'dark-content'}
-                backgroundColor={backgroundStyle.backgroundColor}
-              />
-              <StackNavigator />
-            </SafeAreaView>
+            <StatusBar
+              barStyle={!isDarkMode ? 'light-content' : 'dark-content'}
+              backgroundColor={backgroundStyle.backgroundColor}
+            />
+            <StackNavigator />
           </PaperProvider>
         </NavigationContainer>
       </QueryClientProvider>
