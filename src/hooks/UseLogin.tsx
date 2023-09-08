@@ -8,7 +8,7 @@ function useLogin() {
   const [error, setError] = useState(null);
   const [data, setData] = useState(null);
   const {setNewToken} = useAuth();
-  const {setUser} = useUserLoginStore();
+  const {setUserCredentials} = useUserLoginStore();
 
   interface LoginProps {
     username: string;
@@ -28,7 +28,7 @@ function useLogin() {
         password,
       });
 
-      setUser({token: userData.token, id: userData.id});
+      setUserCredentials({token: userData.token, id: userData.id});
       setNewToken(userData.token);
       setData(userData);
     } catch (err: any) {

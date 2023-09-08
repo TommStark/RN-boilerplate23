@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import {ThemeColors} from '../../themes/Colores';
@@ -14,9 +14,14 @@ interface Props extends StackScreenProps<any, any> {}
 
 export const HomeScreen = ({navigation}: Props) => {
   const {logout} = useAuth();
-  const {user} = useUserLoginStore();
+  const {user, setUserData, userData} = useUserLoginStore();
   const {meQuery} = useUserData(user.id);
   const {width} = Dimensions.get('window');
+
+  useEffect(() => {
+    setUserData(meQuery.data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [meQuery.isFetching, meQuery.isLoading]);
 
   if (meQuery.isLoading || meQuery.isFetching) {
     return <Text>Loading...</Text>;
@@ -33,7 +38,7 @@ export const HomeScreen = ({navigation}: Props) => {
         <View style={{...styles.navBarContainer, width: width}}>
           <View style={styles.navBarChip}>
             <AvatarChip
-              name={meQuery.data?.name.split(' ')[0] || ''}
+              name={userData?.name.split(' ')[0] || ''}
               imageUrl="https://instagram.flpg3-1.fna.fbcdn.net/v/t51.2885-19/264678572_133663595710140_4664007730716980665_n.jpg?stp=dst-jpg_s150x150&_nc_ht=instagram.flpg3-1.fna.fbcdn.net&_nc_cat=100&_nc_ohc=gvaAnXhJlv0AX8vLkbF&edm=ACWDqb8BAAAA&ccb=7-5&oh=00_AfBO0bBngRqsGWBILKJM67US-VwevGMZI3cMAN6FirrDkg&oe=64FEFE35&_nc_sid=ee9879"
               onPress={() => {
                 navigation.navigate('Profile');

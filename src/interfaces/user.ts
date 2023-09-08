@@ -31,3 +31,12 @@ export interface Company {
   catchPhrase: string;
   bs: string;
 }
+
+export interface UserProfile {
+  avatarUrl: string;
+  fullName: string;
+  username: string;
+  email: string;
+  dateOfBirth: string;
+  phoneNumber: string;
+}

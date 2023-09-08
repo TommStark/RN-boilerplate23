@@ -7,14 +7,21 @@ interface user {
 
 interface userLogin {
   user: user;
-  setUser: (user: {token: string; id: number}) => void;
+  userData: any;
+  setUserCredentials: (user: {token: string; id: number}) => void;
+  setUserData: (user: any) => void;
 }
 
 const useUserLoginStore = create<userLogin>(set => ({
   user: {token: '', id: null},
-  setUser: (user: user) =>
+  userData: {},
+  setUserCredentials: (user: user) =>
     set(() => {
       return {user: user};
+    }),
+  setUserData: (user: user) =>
+    set(() => {
+      return {userData: user};
     }),
 }));
 
